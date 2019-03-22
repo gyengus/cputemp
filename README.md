@@ -8,7 +8,7 @@ $ cputemp.py [option]
 ```
 
 Options: | &nbsp;
---- | ---:
+:--- | ---:
 -h, --help | display this help and exit
 -f, --format telegraf\|n | setting output format
 -c, --continuous | refresh every 10 seconds
