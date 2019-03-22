@@ -1,3 +1,4 @@
 build/
+cputemp/__pycache__/
 cputemp.egg-info/
 dist/

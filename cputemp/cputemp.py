@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 from os import popen
 from sys import argv, exit, stdout
 from getopt import getopt
@@ -31,6 +29,7 @@ def showHelp():
     exit()
 
 def formatTemp(arg):
+    temp = convertTemp(readTemp())
     if arg == "telegraf":
         return("cpu temperature=" + str(temp))
     elif arg == "n":
@@ -38,31 +37,34 @@ def formatTemp(arg):
     else:
         return("CPU temperature: " + str(temp) + " °C")
 
-try:
-    argv = argv[1:]
-    opts, args = getopt(argv, "f:hc", ["format=", "help", "continuous"])
-    format = "h"
-    continuous = False
-    if len(opts) == 0:
-        opts = [("-f", "h")]
-    for opt, arg in opts:
-        if opt in ("-f", "--format"):
-            format = arg
-        elif opt in ("-h", "--help"):
-            showHelp()
-        elif opt in ("-c", "--continuous"):
-            continuous = True
+def printTemp(argv):
+    try:
+        argv = argv[1:]
+        opts, args = getopt(argv, "f:hc", ["format=", "help", "continuous"])
+        format = "h"
+        continuous = False
+        if len(opts) == 0:
+            opts = [("-f", "h")]
+        for opt, arg in opts:
+            if opt in ("-f", "--format"):
+                format = arg
+            elif opt in ("-h", "--help"):
+                showHelp()
+            elif opt in ("-c", "--continuous"):
+                continuous = True
 
-    while True:
-        temp = convertTemp(readTemp())
-        if continuous:
-            stdout.write(u"\u001b[1000D")
-        stdout.write(formatTemp(format))
-        stdout.flush()
-        if not continuous:
-            break;
-        sleep(10)
-    print("")
-except KeyboardInterrupt:
-    print("")
-    exit()
+        while True:
+            if continuous:
+                stdout.write(u"\u001b[1000D")
+            stdout.write(formatTemp(format))
+            stdout.flush()
+            if not continuous:
+                break;
+            sleep(10)
+        print("")
+    except KeyboardInterrupt:
+        print("")
+        exit()
+
+def main():
+    printTemp(argv)

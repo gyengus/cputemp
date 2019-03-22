@@ -2,6 +2,11 @@
 
 It reads CPU temperature from `/sys/class/thermal/thermal_zone0/temp`.
 
+Install:
+```bash
+# pip install cputemp
+```
+
 Usage: 
 ```bash
 $ cputemp.py [option]
