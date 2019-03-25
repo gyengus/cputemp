@@ -11,7 +11,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="cputemp",
-    version="0.0.4",
+    version=version,
     author="Gyengus",
     author_email="gyengus@gmail.com",
     description="Show Raspberry Pi's or Orange Pi's CPU temperature",
