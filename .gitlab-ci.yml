@@ -1,0 +1,30 @@
+image: python:3.6-alpine
+
+stages:
+  - deploy
+
+before_script:
+   - pip install twine
+   - python setup.py sdist bdist_wheel
+
+deploy_test:
+  stage: deploy
+  only:
+    - test
+  variables:
+    TWINE_USERNAME: $TEST_USERNAME
+    TWINE_PASSWORD: $TEST_PASSWORD
+    TWINE_REPOSITORY_URL: $TEST_REPOSITORY_URL
+  script:
+    - twine upload dist/*
+
+deploy_production:
+  stage: deploy
+  only:
+    - master
+    - tags
+  variables:
+    TWINE_USERNAME: $PRODUCTION_USERNAME
+    TWINE_PASSWORD: $PRODUCTION_PASSWORD
+  script:
+    - twine upload dist/*
