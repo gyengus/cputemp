@@ -22,8 +22,6 @@ deploy_production:
   stage: deploy
   only:
     - tags
-  except:
-    - /^(?!master).+$/
   variables:
     TWINE_USERNAME: $PRODUCTION_USERNAME
     TWINE_PASSWORD: $PRODUCTION_PASSWORD
