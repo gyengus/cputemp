@@ -1,5 +1,12 @@
 # Show Raspberry Pi's or Orange Pi's CPU temperature
 
+[![PyPI - License](https://img.shields.io/pypi/l/cputemp.svg?color=green)](https://opensource.org/licenses/MPL-2.0)
+[![PyPI](https://img.shields.io/pypi/v/cputemp.svg)](https://pypi.org/project/cputemp/)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/cputemp.svg)](https://pypi.org/project/cputemp/)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/cputemp.svg)](https://pypi.org/project/cputemp/)
+[![PyPI - Wheel](https://img.shields.io/pypi/wheel/cputemp.svg)](https://pypi.org/project/cputemp/)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K5PAV5V7WGWFL)
+
 It reads CPU temperature from `/sys/class/thermal/thermal_zone0/temp`.
 
 ### Install
